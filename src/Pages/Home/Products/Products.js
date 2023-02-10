@@ -45,7 +45,10 @@ const Products = () => {
                 <h1 className='font-bold text-[56px] text-center'>SHOP THE LATEST</h1>
                 <p className='text-center text-gray-500 w-3/6 mx-auto'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis Theme natoque penatibus et magnis dis parturient montes, nascetur</p>
             </div>
-
+            <div className="flex justify-end mr-5 mb-6">
+                <p className="btn btn-xs bg-black rounded-none">❮</p>
+                <p className="btn btn-xs bg-black rounded-none">❯</p>
+            </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                 {
                     productData.map(product => <ProductCard key={product.id} product={product}></ProductCard>)
