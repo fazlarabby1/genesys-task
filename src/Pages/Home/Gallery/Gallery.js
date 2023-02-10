@@ -20,6 +20,7 @@ const Gallery = () => {
                 <img src={gallery4} alt="" />
                 <img src={gallery5} alt="" />
             </div>
+            <hr className='mx-[70px] mt-20 opacity-50' />
         </div>
     );
 };
