@@ -4,17 +4,19 @@ import { FaRegUser, FaSearch } from 'react-icons/fa';
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import useAdmin from '../../hook/useAdmin';
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin(user?.email);
     const navigate = useNavigate();
 
     const handleLogOUt = () => {
         logOut()
             .then(() => {
                 toast.success('Logged Out Successfully')
-                navigate('/');
+                navigate('/login');
             })
             .catch(err => console.log(err))
     }
@@ -49,7 +51,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-end md:navbar-end md:w-full gap-6">
                 <FaSearch />
-                <Link to='/users'><FaRegUser /></Link>
+                {(user && isAdmin) && <Link to='/users'><FaRegUser /></Link>}
                 <RiShoppingBag3Line />
             </div>
         </div>

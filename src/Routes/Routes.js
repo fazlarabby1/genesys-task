@@ -5,6 +5,7 @@ import Home from "../Pages/Home/Home/Home"
 import LogIn from "../Pages/LogIn/LogIn"
 import Registration from "../Pages/Registration/Registration"
 import ResetPassword from "../Pages/ResetPassword/ResetPassword"
+import AdminRoute from "./AdminRoute/AdminRoute"
 
 export const router = createBrowserRouter([
     {
@@ -17,7 +18,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/users',
-                element: <AllUsers />
+                element: <AdminRoute><AllUsers /></AdminRoute>
             },
             {
                 path: '/login',
