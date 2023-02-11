@@ -9,7 +9,7 @@ const Navbar = () => {
         <li><Link className='btn btn-ghost' to='/'>Home</Link></li>
         <li><Link className='btn btn-ghost' to='/'>Shop</Link></li>
         <li><Link className='btn btn-ghost' to='/'>About</Link></li>
-        <li><Link className='btn btn-ghost' to='/'>Blog</Link></li>
+        <li><Link className='btn btn-ghost' to='/login'>LogIn</Link></li>
         <li><Link className='btn btn-ghost' to='/'>Feature</Link></li>
         <li><Link className='btn btn-ghost' to='/'>Contacts</Link></li>
     </React.Fragment>
