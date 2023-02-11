@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 const Registration = () => {
 
@@ -11,7 +12,7 @@ const Registration = () => {
     return (
         <div className='h-[850px] flex justify-center items-center'>
             <div>
-                <h1 className='text-4xl font-bold text-center mb-10'>sign up</h1>
+                <h1 className='text-4xl font-bold text-center mb-10'>Sign up</h1>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="form-control w-full max-w-xs mb-8">
                         <label className="label">
@@ -52,6 +53,7 @@ const Registration = () => {
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
                     <input type="submit" value='Register' className='btn btn-primary rounded-none text-white' />
+                    <Link to='/login' className="font-normal text-sm text-primary ml-6">Already Have an Account?</Link>
                 </form>
             </div>
         </div>

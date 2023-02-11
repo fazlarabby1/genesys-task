@@ -33,7 +33,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-end md:navbar-end md:w-full gap-6">
                     <FaSearch />
-                    <FaRegUser />
+                    <Link to='/users'><FaRegUser /></Link>
                     <RiShoppingBag3Line />
             </div>
         </div>

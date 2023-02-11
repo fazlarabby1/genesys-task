@@ -36,7 +36,7 @@ const LogIn = () => {
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
                     <input type="submit" value='LOGIN' className='btn btn-primary rounded-none text-white' />
-                    <span className="font-normal text-sm text-primary ml-6">Forget Password?</span>
+                    <Link to='/resetPassword' className="font-normal text-sm text-primary ml-6">Forget Password?</Link>
                 </form>
                 <div className='mt-12'>
                     <h1 className='text-2xl font-bold'>New Customer</h1>
