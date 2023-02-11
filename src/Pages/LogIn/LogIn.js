@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 
 const LogIn = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
+    const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const [loginError, setLoginError] = useState('');
+
     const handleLogin = (data) => {
-        console.log(data);
+        const email = data.email;
+        const password = data.password;
+        signIn(email, password)
+        .then(result =>{
+            const user = result.user;
+            toast.success('Successfully Logged In')
+            console.log(user);
+            navigate('/')
+        })
+        .catch(err => setLoginError(err))
     }
 
     return (
@@ -30,10 +46,11 @@ const LogIn = () => {
                         </label>
                         <input {...register("password",
                             {
-                                required: "Password is required", minLength: { value: 6, message: "Password length must be above 6 characters" }
+                                required: "Password is required"
                             })}
                             type="password" placeholder="***********" className="input input-bordered rounded-none w-full md:w-[400px]" />
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
+                        {loginError?.message && <p className='text-red-600'>{loginError?.message}</p>}
                     </div>
                     <input type="submit" value='LOGIN' className='btn btn-primary rounded-none text-white' />
                     <Link to='/resetPassword' className="font-normal text-sm text-primary ml-6">Forget Password?</Link>
