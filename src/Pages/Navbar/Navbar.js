@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { FaRegUser, FaSearch } from 'react-icons/fa';
 import { RiShoppingBag3Line } from "react-icons/ri";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogOUt = () => {
+        logOut()
+            .then(() => {
+                toast.success('Logged Out Successfully')
+                navigate('/');
+            })
+            .catch(err => console.log(err))
+    }
 
     const navItems = <React.Fragment>
         <li><Link className='btn btn-ghost' to='/'>Home</Link></li>
@@ -11,7 +25,9 @@ const Navbar = () => {
         <li><Link className='btn btn-ghost' to='/'>About</Link></li>
         <li><Link className='btn btn-ghost' to='/'>Feature</Link></li>
         <li><Link className='btn btn-ghost' to='/'>Contacts</Link></li>
-        <li><Link className='btn btn-ghost' to='/login'>LogIn</Link></li>
+        {user?.uid ? <li><Link onClick={handleLogOUt} className='btn btn-ghost' to='/'>LogOut</Link></li>
+            :
+            <li><Link className='btn btn-ghost' to='/login'>LogIn</Link></li>}
     </React.Fragment>
     return (
         <div className="navbar bg-base-100 lg:px-10">

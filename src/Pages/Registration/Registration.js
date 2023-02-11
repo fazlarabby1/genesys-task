@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
@@ -20,7 +21,7 @@ const Registration = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                toast.success('Account created successfully')
                 navigate('/')
             })
             .catch(err => setSignUpError(err))
