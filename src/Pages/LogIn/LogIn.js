@@ -33,7 +33,7 @@ const LogIn = () => {
 
     return (
         <div className='h-[750px] flex justify-center items-center'>
-            <div>
+            <div className='pl-2 md:pl-0'>
                 <h1 className='text-4xl font-bold text-center mb-10'>Log in</h1>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="form-control w-full max-w-xs mb-8">
