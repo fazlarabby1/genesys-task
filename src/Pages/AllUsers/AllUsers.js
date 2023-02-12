@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Loading from '../../components/Loading/Loading';
+import { AuthContext } from '../../context/AuthProvider';
 
 const AllUsers = () => {
 
     const [users, setUsers] = useState([]);
+    const {user} = useContext(AuthContext);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
