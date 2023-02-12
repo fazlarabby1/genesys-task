@@ -7,7 +7,7 @@ const AllUsers = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allUsers', {
+        fetch('https://genesys-task-server.vercel.app/allUsers', {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
